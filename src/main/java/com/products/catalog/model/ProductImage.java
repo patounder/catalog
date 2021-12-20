@@ -18,6 +18,11 @@ public class ProductImage {
         super();
     }
 
+    public ProductImage(boolean isPrincipal, String url) {
+        this.isPrincipal = isPrincipal;
+        this.url = url;
+    }
+
     public ProductImage(int id, boolean isPrincipal, String url) {
         this.id = id;
         this.isPrincipal = isPrincipal;
