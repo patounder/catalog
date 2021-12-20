@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
+import java.util.Optional;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -22,5 +23,18 @@ class CatalogApplicationTests {
 	void whenApplicationStarts_thenHibernateCreatesInitialRecords(){
 		List<Product> productList = productService.getAll();
 		Assert.assertEquals(3, productList.size());
+	}
+
+	@Test
+	void whenSelectBySku_thenRetrieveCorrect(){
+		Optional<Product> productSelected = this.productService.findBySku("FAL-8406270");
+		Assert.assertNotNull(productSelected.get());
+		Assert.assertEquals("500 Zapatilla Urbana Mujer", productSelected.get().getName());
+	}
+
+	@Test
+	void whenSelectBySku_thenRetrieveEmpty(){
+		Optional<Product> productSelected = this.productService.findBySku("FAL-12345");
+		Assert.assertTrue(productSelected.isEmpty());
 	}
 }
