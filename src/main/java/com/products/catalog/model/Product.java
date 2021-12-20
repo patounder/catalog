@@ -1,23 +1,28 @@
-package com.products.catalog.models;
+package com.products.catalog.model;
 
-import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table
 public class Product {
 
+    @Id
     private String sku;
     private String name;
     private String brand;
     private String size;
     private float price;
     private String principalImage;
-    private List<String> otherImages;
+    //private List<String> otherImages;
 
     public Product(){
         super();
     }
 
-    public Product(String sku, String name, String brand, String size, float price, String principalImage,
-                   List<String> otherImages) {
+    public Product(String sku, String name, String brand, String size, float price, String principalImage) {
         super();
         this.sku = sku;
         this.name = name;
@@ -25,7 +30,6 @@ public class Product {
         this.size = size;
         this.price = price;
         this.principalImage = principalImage;
-        this.otherImages = otherImages;
     }
 
     public String getSku() {
@@ -76,14 +80,6 @@ public class Product {
         this.principalImage = principalImage;
     }
 
-    public List<String> getOtherImages() {
-        return otherImages;
-    }
-
-    public void setOtherImages(List<String> otherImages) {
-        this.otherImages = otherImages;
-    }
-
     @Override
     public String toString() {
         return "Product{" +
@@ -92,8 +88,7 @@ public class Product {
                 ", brand='" + brand + '\'' +
                 ", size='" + size + '\'' +
                 ", price=" + price +
-                ", principalImage='" + principalImage + '\'' +
-                ", otherImages=" + otherImages +
+                ", principalImage='" + principalImage +
                 '}';
     }
 }
