@@ -1,0 +1,3 @@
+INSERT INTO product (sku, name, brand, size, price, principal_image) VALUES ('FAL-8406270', '500 Zapatilla Urbana Mujer', 'NEW BALANCE', '37', 42990.00, 'https://imagen1_path');
+INSERT INTO product (sku, name, brand, size, price, principal_image) VALUES ('FAL-881952283', 'Bicicleta Baltoro Aro 29', 'JEEP', 'ST', 399990.00, 'https://imagen2_path');
+INSERT INTO product (sku, name, brand, size, price, principal_image) VALUES ('FAL-8818985', 'Camisa manga corta hombre', 'BASEMENT', 'M', 24990.00, 'https://imagen3_path');

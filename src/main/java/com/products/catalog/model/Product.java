@@ -6,15 +6,20 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table
+@Table(name = "product")
 public class Product {
 
     @Id
     private String sku;
+    @Column
     private String name;
+    @Column
     private String brand;
+    @Column
     private String size;
+    @Column
     private float price;
+    @Column
     private String principalImage;
     //private List<String> otherImages;
 
@@ -22,7 +27,7 @@ public class Product {
         super();
     }
 
-    public Product(String sku, String name, String brand, String size, float price, String principalImage) {
+    public Product(String sku, String name, String brand, String size, Float price, String principalImage) {
         super();
         this.sku = sku;
         this.name = name;
@@ -64,11 +69,11 @@ public class Product {
         this.size = size;
     }
 
-    public float getPrice() {
+    public Float getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(Float price) {
         this.price = price;
     }
 
@@ -78,17 +83,5 @@ public class Product {
 
     public void setPrincipalImage(String principalImage) {
         this.principalImage = principalImage;
-    }
-
-    @Override
-    public String toString() {
-        return "Product{" +
-                "sku='" + sku + '\'' +
-                ", name='" + name + '\'' +
-                ", brand='" + brand + '\'' +
-                ", size='" + size + '\'' +
-                ", price=" + price +
-                ", principalImage='" + principalImage +
-                '}';
     }
 }
