@@ -24,7 +24,7 @@ public class ProductsController {
     }
 
     @GetMapping(value = "/{sku}")
-    public String findById(@PathVariable("sku") String sku){
-        return sku;
+    public Product findById(@PathVariable("sku") String sku){
+        return this.productService.findBySku(sku).get();
     }
 }
