@@ -55,7 +55,6 @@ class CatalogApplicationTests {
 		Assert.assertEquals("brand prod", productCreated.getBrand());
 	}
 
-
 	@Test
 	void whenUpdateProduct_thenReturnUpdated(){
 		Optional<Product> productSelected = this.productService.findBySku("FAL-881952283");
@@ -64,5 +63,23 @@ class CatalogApplicationTests {
 		productSelected.get().setBrand("CAT");
 		Product productUpdated = this.productService.update(productSelected.get());
 		Assert.assertEquals("CAT", productUpdated.getBrand());
+	}
+
+	@Test
+	void whenDeleteProductNySku_thenRemoveInDB(){
+		List<Product> productList = productService.getAll();
+		Assert.assertEquals(3, productList.size());
+
+		productService.deleteBySku("FAL-881952283");
+
+		List<Product> productListAfterDelete = productService.getAll();
+		Assert.assertEquals(2, productListAfterDelete.size());
+
+		String skuProductFirstInDB = productListAfterDelete.get(0).getSku();
+		String skuProductSecondInDB = productListAfterDelete.get(1).getSku();
+		Assert.assertTrue((skuProductFirstInDB.equalsIgnoreCase("FAL-8818985")) ||
+				(skuProductFirstInDB.equalsIgnoreCase("FAL-8406270")));
+		Assert.assertTrue((skuProductSecondInDB.equalsIgnoreCase("FAL-8818985")) ||
+				(skuProductSecondInDB.equalsIgnoreCase("FAL-8406270")));
 	}
 }

@@ -34,4 +34,8 @@ public class ProductService {
         return this.productRepository.save(product);
     }
 
+    public void deleteBySku(String sku){
+        this.productRepository.deleteById(sku);
+    }
+
 }
