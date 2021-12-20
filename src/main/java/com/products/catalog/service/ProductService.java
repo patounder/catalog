@@ -26,5 +26,8 @@ public class ProductService {
         return this.productRepository.findById(sku);
     }
 
+    public Product update(Product product){
+        return this.productRepository.save(product);
+    }
 
 }
