@@ -1,9 +1,7 @@
 package com.products.catalog.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "product")
@@ -19,22 +17,23 @@ public class Product {
     private String size;
     @Column
     private float price;
-    @Column
-    private String principalImage;
-    //private List<String> otherImages;
+
+    @OneToMany(targetEntity = ProductImage.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    @JoinColumn(name = "product_sku", referencedColumnName = "sku")
+    private Set<ProductImage> images;
 
     public Product(){
         super();
     }
 
-    public Product(String sku, String name, String brand, String size, Float price, String principalImage) {
+    public Product(String sku, String name, String brand, String size, Float price, Set<ProductImage> images) {
         super();
         this.sku = sku;
         this.name = name;
         this.brand = brand;
         this.size = size;
         this.price = price;
-        this.principalImage = principalImage;
+        this.images = images;
     }
 
     public String getSku() {
@@ -77,11 +76,11 @@ public class Product {
         this.price = price;
     }
 
-    public String getPrincipalImage() {
-        return principalImage;
+    public Set<ProductImage> getImages() {
+        return images;
     }
 
-    public void setPrincipalImage(String principalImage) {
-        this.principalImage = principalImage;
+    public void setImages(Set<ProductImage> images) {
+        this.images = images;
     }
 }
