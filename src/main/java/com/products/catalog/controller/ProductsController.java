@@ -38,4 +38,9 @@ public class ProductsController {
         product.setSku(sku);
         return this.productService.update(product);
     }
+
+    @DeleteMapping("/{sku}")
+    public void deleteProduct(@PathVariable("sku") String sku){
+        this.productService.deleteBySku(sku);
+    }
 }

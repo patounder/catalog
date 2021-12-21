@@ -46,6 +46,12 @@ public class ProductService {
     }
 
     public void deleteBySku(String sku){
+        Optional<Product> existingProduct = this.productRepository.findById(sku);
+
+        if(existingProduct.isEmpty()){
+            throw new IllegalArgumentException();
+        }
+
         this.productRepository.deleteById(sku);
     }
 
