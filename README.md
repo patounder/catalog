@@ -22,6 +22,7 @@ This application is based on the REST pattern, implemented with the following te
 + Maven 3.6
 + H2 Database
 + Framework ORM Hibernate
++ Unit test with Junit
 
 The election about database H2, it was decided not to depend on an external database and to keep it in memory. For other hand, 
 selected Hibernate given its usefulness for handling entity-object mapping. Finally, with finally, given the Springboot features,
