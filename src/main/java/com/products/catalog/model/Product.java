@@ -1,6 +1,7 @@
 package com.products.catalog.model;
 
 import javax.persistence.*;
+import java.util.Optional;
 import java.util.Set;
 
 @Entity
@@ -81,9 +82,7 @@ public class Product {
     }
 
     public void setImages(Set<ProductImage> images) {
-        //this.images.addAll(images);
-
-        if(this.images == null){
+        if(Optional.ofNullable(this.images).isEmpty()){
             this.images = images;
         } else {
             this.images.retainAll(images);
