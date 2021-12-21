@@ -8,15 +8,18 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping("/catalog/products")
 public class ProductsController {
 
-    @Autowired
     private ProductService productService;
+
+    @Autowired
+    public ProductsController(ProductService productService){
+        this.productService = productService;
+    }
 
     @GetMapping
     public List<Product> getAll(){

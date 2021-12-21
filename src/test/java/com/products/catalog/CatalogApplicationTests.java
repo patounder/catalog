@@ -57,12 +57,12 @@ class CatalogApplicationTests {
 
 	@Test
 	void whenUpdateProduct_thenReturnUpdated(){
-		Optional<Product> productSelected = this.productService.findBySku("FAL-881952283");
+		Optional<Product> productSelected = this.productService.findBySku("FAL-8406270");
 
-		Assert.assertEquals("JEEP", productSelected.get().getBrand());
-		productSelected.get().setBrand("CAT");
+		Assert.assertEquals("NEW BALANCE", productSelected.get().getBrand());
+		productSelected.get().setBrand("ADIDAS");
 		Product productUpdated = this.productService.update(productSelected.get());
-		Assert.assertEquals("CAT", productUpdated.getBrand());
+		Assert.assertEquals("ADIDAS", productUpdated.getBrand());
 	}
 
 	@Test
