@@ -31,6 +31,17 @@ public class ProductService {
     }
 
     public Product update(Product product){
+        Optional<Product> existingProduct = this.productRepository.findById(product.getSku());
+
+        if(existingProduct.isEmpty()){
+            throw new IllegalArgumentException();
+        }
+
+        existingProduct.get().setName(product.getName());
+        existingProduct.get().setBrand(product.getBrand());
+        existingProduct.get().setSize(product.getSize());
+        existingProduct.get().setPrice(product.getPrice());
+        existingProduct.get().setImages(product.getImages());
         return this.productRepository.save(product);
     }
 

@@ -32,4 +32,10 @@ public class ProductsController {
     public Product createProduct(@RequestBody Product product){
         return this.productService.create(product);
     }
+
+    @PutMapping(value = "/{sku}")
+    public Product updateProduct(@PathVariable("sku") String sku, @RequestBody Product product){
+        product.setSku(sku);
+        return this.productService.update(product);
+    }
 }

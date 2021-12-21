@@ -81,6 +81,13 @@ public class Product {
     }
 
     public void setImages(Set<ProductImage> images) {
-        this.images = images;
+        //this.images.addAll(images);
+
+        if(this.images == null){
+            this.images = images;
+        } else {
+            this.images.retainAll(images);
+            this.images.addAll(images);
+        }
     }
 }
