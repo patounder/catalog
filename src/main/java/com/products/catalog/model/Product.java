@@ -19,7 +19,7 @@ public class Product {
     @Column
     private float price;
 
-    @OneToMany(targetEntity = ProductImage.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    @OneToMany(targetEntity = ProductImage.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     @JoinColumn(name = "product_sku", referencedColumnName = "sku")
     private Set<ProductImage> images;
 
